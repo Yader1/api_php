@@ -1,1 +1,4 @@
-<p>Hola mundo</p>
+<?php
+    require_once "clases/conexion/conexion.php";
+    $conexion = new conexion;
+?>

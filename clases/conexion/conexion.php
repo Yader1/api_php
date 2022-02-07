@@ -31,5 +31,32 @@
             $jsondata = file_get_contents($direccion . "/" . "config");
             return json_decode($jsondata, true);
         }
+
+        private function convertirUTF8($array){
+            array_walk_recursive($array, function(&$item, $key){
+                if(!mb_detect_encoding($item, 'utf-8', true)){
+                    $item = utf8_encode($item);
+                }
+            });
+
+            return $array;
+        }
+
+        //Metodo para obtener datos
+        public function obtenerDatos($sqlstr){
+            $results = $this->conexion->query($sqlstr);
+            $resultArray = array();
+
+            foreach($results as $key){
+                $resultArray[] = $key;
+            }
+
+            return $this->convertirUTF8($resultArray);
+        }
     }
+
+
+
+
+
 ?>

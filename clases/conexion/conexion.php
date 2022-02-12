@@ -69,10 +69,11 @@
                 return 0;
             }
         }
+
+        //Encriptar
+        protected function encriptar($string){
+            //md5 se usa para encriptar los string
+            return md5($string);
+        }
     }
-
-
-
-
-
 ?>

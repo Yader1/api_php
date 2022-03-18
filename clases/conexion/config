@@ -3,7 +3,7 @@
         "server": "localhost",
         "user": "root",
         "password": "",
-        "database": "cliente",
-        "port": "3306"
+        "database": "apiprueva",
+        "port": "3307"
     }
 }

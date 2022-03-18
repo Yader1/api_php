@@ -13,6 +13,12 @@
             $pagina = $_GET["page"];
             $listaPacientes = $_pacientes->listaPacientes($pagina);
             echo json_encode($listaPacientes);
+
+            //Obtenemos un paciente por id
+        }else if(isset($_GET['id'])){
+        $pacienteid = $_GET['id'];
+        $datosPaciente = $_pacientes->obtenerPaciente($pacienteid);
+        echo json_encode($datosPaciente);
         }
         //Si no es el metodo GET pasamos al metodo POST
     }else if($_SERVER['REQUEST_METHOD'] == "POST"){

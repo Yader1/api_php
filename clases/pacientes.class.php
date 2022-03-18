@@ -19,5 +19,10 @@
             $datos = parent::obtenerDatos($query);
             return $datos;
         }
+        //Extraer un paciente por ID
+        public function obtenerPaciente($id){
+            $query = "SELECT * FROM " . $this->table . " WHERE PacienteId = '$id'";
+            return parent::obtenerDatos($query);
+        }
     }
 ?>

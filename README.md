@@ -2,8 +2,8 @@
 
 #
 
-## Montar nuestro proyecto en Hosting o Servidor
-#   1 ---> Exportamos nuestra base de datos
+### Montar nuestro proyecto en Hosting o Servidor
+####  1 ---> Exportamos nuestra base de datos
 #   2 ---> Accedemos a nuestro servidor de almacenamiento
 #   3 ---> Creamos una base de datos
 #   4 ---> Modificamos los datos de nuestro archivo config con la del servidor

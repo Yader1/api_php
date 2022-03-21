@@ -127,5 +127,41 @@
                 return 0;
             }
         }
+
+        //Metodo delete
+        public function delete( $json ){
+            $_respuestas = new respuestas;
+            $datos = json_decode($json, true);
+
+            //Campo requerido
+            if(!isset($datos['pacienteId'])){
+                return $_respuestas->error_400();
+            }else{
+                $this->pacienteid = $datos['pacienteId'];
+
+                $resp = $this->eliminarPaciente();
+
+                if( $resp ){
+                   $respuesta = $_respuestas->response;
+                   $respuesta["result"] = array(
+                    "pacienteid" => $this->pacienteid
+                   );
+                   return $respuesta;
+                }else{
+                    return $_respuestas->error_500();
+                }
+                
+            }
+        }
+
+        private function eliminarPaciente(){
+            $query = "DELETE FROM " . $this->table . " WHERE PacienteId= '" . $this->pacienteid . "'";
+            $resp = parent::nonQuery($query);
+            if($resp >= 1){
+                return $resp;
+            }else{
+                return 0;
+            }
+        }
     }
 ?>

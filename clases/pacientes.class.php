@@ -14,7 +14,7 @@
         private $telefono = "";
         private $fechaNacimiento = "0000-00-00";
         private $correo = "";
-        //54180a8734752796eabe1ca33c034900
+        private $imagen = "";
 
         //Token
         private $token = "";
@@ -65,6 +65,12 @@
                         if(isset($datos['genero'])){ $this->genero = $datos['genero']; }
                         if(isset($datos['fechaNacimiento'])){ $this->fechaNacimiento = $datos['fechaNacimiento']; }
 
+                        //Recibir imagen
+                        if(isset($datos['imagen'])){
+                            $resp = $this->procesarImg($datos['imagen']);
+                            $this->imagen = $resp;
+                        }
+
                         $resp = $this->insertarPacientes();
 
                         if( $resp ){
@@ -84,11 +90,28 @@
             }
         }
 
+        //Procesar img
+        private function procesarImg($img){
+            $direccion = dirname(__DIR__) . "\public\img\\";
+            $partes = explode(";base64",$img);
+            $extencion = explode('/', mime_content_type($img))[1];
+            $imagen_base64 = base64_decode($partes[1]);
+
+            $file = $direccion . uniqid() . "." . $extencion;
+
+            //Guardamos la imagen
+            file_put_contents($file, $imagen_base64);
+
+            $nuevaDireccion = str_replace('\\', '/', $file);
+
+            return $nuevaDireccion;
+        }
+
         //Insertar formulario
         private function insertarPacientes(){
-            $query = "INSERT INTO " . $this->table . " (DNI,Nombre,Direccion,CodigoPostal,Telefono,Genero,FechaNacimiento,Correo)
+            $query = "INSERT INTO " . $this->table . " (DNI,Nombre,Direccion,CodigoPostal,Telefono,Genero,FechaNacimiento,Correo,Imagen)
             values
-            ('" . $this->dni . "','" . $this->nombre . "','" . $this->direccion . "','" . $this->codigoPostal . "','" . $this->telefono . "','" . $this->genero . "','" . $this->fechaNacimiento . "','" . $this->correo . "')";
+            ('" . $this->dni . "','" . $this->nombre . "','" . $this->direccion . "','" . $this->codigoPostal . "','" . $this->telefono . "','" . $this->genero . "','" . $this->fechaNacimiento . "','" . $this->correo . "','" . $this->imagen . "')";
             $resp = parent::nonQueryId($query);
 
             if( $resp ){

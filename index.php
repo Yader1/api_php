@@ -46,7 +46,9 @@
                <br> 
                "codigoPostal" :"",             
                <br>  
-               "genero" : "",        
+               "genero" : "", 
+               <br>  
+               "imagen" : "",        
                <br>        
                "telefono" : "",       
                <br>       

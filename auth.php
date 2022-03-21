@@ -3,7 +3,7 @@
     require_once 'clases/respuestas.class.php';
 
     //Instanciamos las clases
-     $_auth = new auth;
+    $_auth = new auth;
     $_respuestas = new respuestas;
 
     //Consultamos que metodos esta utilizando para acceder

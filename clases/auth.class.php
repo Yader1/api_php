@@ -8,7 +8,7 @@
             //Convertimos el archivo JSON en un array
             $datos = json_decode($json, true);
             //Verificamos los campos que estan siendo enviados
-            if(!isset($datos['usuarios']) || !isset($datos["password"])){
+            if(!isset($datos['usuario']) || !isset($datos["password"])){
                 //Error con los campos
                 return $_respuestas->error_400();          
             }else{ 
@@ -24,7 +24,7 @@
                     if($password == $datos[0]['Password']){
                         if($datos[0]['Estado'] == "Activo"){
                             //Crear el token
-                            $verificartoken = $this->insertarToken($datos[0]['Usuarioid']);
+                            $verificartoken = $this->insertarToken($datos[0]['UsuarioId']);
                             if($verificartoken){
                                 //Si se guardo
                                 $result = $_respuestas->response;

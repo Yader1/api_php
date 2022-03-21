@@ -15,6 +15,9 @@
         private $fechaNacimiento = "0000-00-00";
         private $correo = "";
 
+        //Token
+        private $token = "";
+
         public function listaPacientes($pagina = 1){
             $inicio = 0;
             $cantidad = 100;

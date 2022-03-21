@@ -239,17 +239,5 @@
                 return 0;
             }
         }
-
-        private function actualizarToken( $tokenid ){
-            $date = date("Y-m-d H:i");
-            $query = "UPDATE usuarios_token SET Fecha = '$date' WHERE TokenId = '$tokenid' ";
-            $resp = parent::nonQuery($query);
-
-            if( $resp >= 1 ){
-                return $resp;
-            }else{
-                return 0;
-            }
-        }
     }
 ?>

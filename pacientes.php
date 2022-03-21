@@ -65,8 +65,20 @@
         //Si no es el metodo PUT pasamos al metodo DELETE
     }else if($_SERVER['REQUEST_METHOD'] == "DELETE"){
 
-         //Resivimos los datos enviados
-         $postBody = file_get_contents("php://input");
+        //Recibir datos por el header
+        $headers = getallheaders();
+        if(isset( $headers["token"]) && ($headers["pacienteId"]) ){
+            $send = [
+                "token" =>  $headers["token"],
+                "pacienteId" => $headers["pacienteId"]
+            ];
+            //Convertimos estos datos a JSON
+            $postBody = json_encode($send);
+
+        }else{
+            //Resivimos los datos enviados
+            $postBody = file_get_contents("php://input");
+        }
          //Enviamos los datos al manejador
          $datosArray = $_pacientes->delete($postBody);
          //Devolvemos una respuesta

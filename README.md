@@ -12,5 +12,5 @@
 ####  5 ---> Ejecutamos nuestro Script de la base de datos generada
 ####  6 ---> Creamos una cuenta FTP
 ####  7 ---> Abrimos FileZila y pegamos nuestro nombre de usuario, contraseña y en servidor pegamos el Host_Name -> Conexion Rapida.
-####  8 ---> Buscamos nuestro proyecto y masrcamos todo menos la carpeta de GIT y lo arastramos al siguente cuadro.
+####  8 ---> Buscamos nuestro proyecto y marcamos todo menos la carpeta de GIT y lo arastramos al siguente cuadro.
 ####  9 ---> Listo

@@ -41,5 +41,14 @@ class respuestas{
         return $this->response;
     }
 
+    public function error_401($string = "No autorizado, Token invalido"){
+        $this->response['status'] = "error";
+        $this->response['result'] = array(
+            "error_id" => "401",
+            "error_msg" => $string
+        );
+        return $this->response;
+    }
+
 }
 ?>
